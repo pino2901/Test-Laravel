@@ -2,7 +2,7 @@
     <div class="container">
         <div class="navbar-content">
             <a href="#" class="navbar-brand">
-                Laravel<span>Tutorial</span>
+                Test<span>SaleMall</span>
             </a>
             <form class="search-form">
                 <div class="input-group">
@@ -111,28 +111,36 @@
                     </div>
                 </li>
                 <li class="nav-item dropdown">
+                    @if (Session::get('email'))
                     <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img class="wd-30 ht-30 rounded-circle" src="{{asset('img/bg-login.jpg')}}" alt="profile">
+                        <img class="wd-30 ht-30 rounded-circle" src="{{asset('img/avatar1.jpg')}}" alt="profile">
                     </a>
                     <div class="dropdown-menu p-0" aria-labelledby="profileDropdown">
                         <div class="d-flex flex-column align-items-center border-bottom px-5 py-3">
                             <div class="mb-3">
-                                <img class="wd-80 ht-80 rounded-circle" src="{{asset('img/bg-login.jpg')}}" alt="">
+                                <img class="wd-80 ht-80 rounded-circle" src="{{asset('img/avatar1.jpg')}}" alt="">
                             </div>
                             <div class="text-center">
-                                <p class="tx-16 fw-bolder">Harison</p>
-                                <p class="tx-12 text-muted">harisonmatondang@gmail.com</p>
+                                <p class="tx-16 fw-bolder">Giang</p>
+                                <p class="tx-12 text-muted">giang@gmail.com</p>
                             </div>
                         </div>
                         <ul class="list-unstyled p-1">
-                            <li class="dropdown-item py-2">
-                                <a href="#" class="text-body ms-0">
-                                    <i class="me-2 icon-md" data-feather="log-out"></i>
-                                    <span>Log Out</span>
-                                </a>
+                                <li class="dropdown-item py-2">
+                                    <a href=" {{ asset('logout') }}">
+                                        <button type="submit" class="btn btn-danger">
+                                            <i class="me-2 icon-md" data-feather="log-out"></i>
+                                                <span>Log Out</span>
+                                        </button>
+                                    </a>
                             </li>
                         </ul>
                     </div>
+                    @else
+                        <a href="{{ asset('login') }}">Dang nhap</a>
+                        <a href=" {{ asset('register') }}">Dang ki</a>
+                    @endif
+
                 </li>
             </ul>
             <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="horizontal-menu-toggle">

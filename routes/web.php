@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,16 +16,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::any('/', [ProductsController::class,'index']);
 Route::resource('products', ProductsController::class);
 
+Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/login', [AuthController::class, 'loginPost'])->name('login');
+Route::get('/register', [AuthController::class, 'register'])->name('register');
+Route::post('/register', [AuthController::class, 'registerPost'])->name('register');
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::prefix('posts')->group(function () {
-    Route::get('index', [PostsController::class, 'index']);
-    Route::post('store', [PostsController::class, 'store']);
-    Route::post('edit', [PostsController::class, 'edit']);
-    Route::delete('destroy', [PostsController::class, 'destroy']);
-});
+
+// API danh sách sản phẩm
+Route::get('/api/v1/product/list', [ProductsController::class, 'productListApi']);
+
+// API cập nhật sản phẩm
+Route::post('/api/v1/product/{id}/update', [ProductsController::class, 'updateProductApi']);
+// API xóa sản phẩm
+Route::delete('/api/v1/product/{id}/delete', [ProductsController::class, 'deleteProductApi']);
+

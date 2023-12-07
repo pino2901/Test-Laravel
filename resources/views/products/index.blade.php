@@ -28,8 +28,10 @@
                         <th class="pt-0">#</th>
                         <th class="pt-0">Product Name</th>
                         <th class="pt-0">Product Detail</th>
+                        <th class="pt-0">Product Price</th>
                         <th class="pt-0">Product Image</th>
                         <th class="pt-0">Created At</th>
+                        <th class="pt-0">Updated At</th>
                         <th class="pt-0">Actions</th>
                     </tr>
                     </thead>
@@ -39,8 +41,16 @@
                             <td>{{++$index}}</td>
                             <td>{{$val->name}}</td>
                             <td>{{$val->detail}}</td>
+                            <td>
+                                @if (Session::get('email'))
+                                    {{$val->price}}
+                                @else
+                                    <a href="{{ asset('login') }}">Liên hệ</a>
+                                @endif
+                            </td>
                             <td><img alt="img" src="/img/{{ $val->image }}" width="100px"></td>
                             <td>{{ $val->created_at }}</td>
+                            <td>{{ $val->updated_at }}</td>
                             <td>
                                 <form action="{{ route('products.destroy',$val->id) }}" method="POST">
                                     {{ csrf_field()  }}

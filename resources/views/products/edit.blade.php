@@ -36,7 +36,10 @@
                     <label for="detail" class="form-label">Detail Product Name <span class="text-danger">*</span></label>
                     <textarea class="form-control" placeholder="Detail Product Name" name="detail" id="detail" cols="12" rows="3">{{$product->detail}}</textarea>
                 </div>
-
+                <div class="mb-3">
+                    <label for="price" class="form-label">Price Product Name <span class="text-danger">*</span></label>
+                    <textarea class="form-control" placeholder="Detail Product Name" name="price" id="price" cols="12" rows="3">{{$product->price}}</textarea>
+                </div>
                 <div class="mb-3">
                     <label for="image" class="form-label">Product Image <span class="text-danger">*</span></label>
                     <input id="image" name="image" type="file" class="form-control">
