@@ -30,7 +30,7 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/api/v1/product/list', [ProductsController::class, 'productListApi']);
 
 // API cập nhật sản phẩm
-Route::post('/api/v1/product/{id}/update', [ProductsController::class, 'updateProductApi']);
+Route::put('/api/v1/product/{id}/update', [ProductsController::class, 'updateProductApi']);
 // API xóa sản phẩm
 Route::delete('/api/v1/product/{id}/delete', [ProductsController::class, 'deleteProductApi']);
 
